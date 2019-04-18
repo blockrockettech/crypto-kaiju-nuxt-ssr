@@ -73,3 +73,4 @@ typings/
 /prod/server/nuxt
 crypto-kaiju-nuxt-ssr.iml
 .firebase
+/src/dist/
