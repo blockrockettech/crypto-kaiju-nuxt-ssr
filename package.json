@@ -1,0 +1,25 @@
+{
+  "name": "cryptokaiju-nuxt-ssr",
+  "version": "0.1.0",
+  "description": "CryptoKaiju SSR Nuxt Project",
+  "license": "MIT",
+  "author": "james.morgan@blockrocket.tech",
+  "repository": "https://github.com/blockrockettech/crypto-kaiju-nuxt-ssr",
+  "scripts": {
+    "dev": "cd \"src\" && npm run dev",
+    "build": "npm run build:nuxt && npm run clean && npm run copyassets",
+    "serve": "NODE_ENV=development firebase use cryptokaiju-beta && firebase serve --only functions,hosting",
+    "setup": "npm install && npm run setup:client && npm run setup:server",
+    "setup:client": "cd \"src\" && npm install",
+    "setup:server": "cd \"prod/server\" && npm install",
+    "copyassets": "npm run copydist && npm run copystatic",
+    "copydist": "cp -R prod/server/nuxt/dist/ prod/client/assets",
+    "copystatic": "cp -R src/static/ prod/client",
+    "clean": "rimraf prod/client/assets/* && rimraf prod/client/*.*",
+    "build:nuxt": "cd \"src\" && npm run build"
+  },
+  "devDependencies": {
+    "cross-env": "^5.0.5",
+    "rimraf": "^2.6.2"
+  }
+}
